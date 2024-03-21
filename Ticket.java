@@ -7,6 +7,13 @@ public class Ticket {
     public Ticket() {
     }
 
+    public Ticket(String row, int seatNo, Person person) {
+        this.row = row;
+        this.seatNo = seatNo;
+        this.person = person;
+        setPrice();
+    }
+
     public Ticket(String row, int seatNo, double price, Person person) {
         this.row = row;
         this.seatNo = seatNo;
@@ -34,8 +41,14 @@ public class Ticket {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice() {
+        if (this.seatNo<=5){
+            this.price = 200;
+        } else if (this.seatNo<=9) {
+            this.price=150;
+        }else{
+            this.price=180;
+        }
     }
 
     public Person getPerson() {

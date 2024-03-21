@@ -57,8 +57,26 @@ public class W2051722PlaneManagement {
 
         String email;
         do {
+            System.out.print("Enter your email : ");
             email = input.next();
         }while (!validateEmail(email));
+
+        int index = getIndexToStoreTicket(tickets);
+
+        if (index!= -1){
+            tickets[index] = new Ticket(row,seatNo,new Person(name,surname,email));
+        }
+    }
+
+    private static int getIndexToStoreTicket(Ticket[] tickets) {
+        int x = 0;
+        for (Ticket ticket:tickets){
+            if (ticket==null){
+                return x;
+            }
+            x++;
+        }
+        return -1;
     }
 
     private static boolean validateEmail(String email) {
