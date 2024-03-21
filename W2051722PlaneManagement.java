@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,13 +29,17 @@ public class W2051722PlaneManagement {
                         cancelSeat(input, tickets);
                         break;
                     case 3:
-                        findFirstAvailableSeat(input,tickets,rows,maxSeatsPerRow);
+                        findFirstAvailableSeat(tickets,rows,maxSeatsPerRow);
                         break;
                     case 4:
-                        showSeatingPlan(input,tickets,rows,maxSeatsPerRow);
+                        showSeatingPlan(tickets,rows,maxSeatsPerRow);
                         break;
-                    case 5:break;
-                    case 6:break;
+                    case 5:
+                        printTicketInformationAndTotalSales(tickets);
+                        break;
+                    case 6:
+                        searchTicket(input,tickets);
+                        break;
                     case 0:
                         flag=false;
                         break;
@@ -48,7 +54,45 @@ public class W2051722PlaneManagement {
 
     }
 
-    private static void showSeatingPlan(Scanner input, Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
+    private static void searchTicket(Scanner input, Ticket[] tickets) {
+        NumberFormat ukFormat = NumberFormat.getCurrencyInstance(Locale.UK);
+        String row = getRowFromUser(input);
+        int seatNo = getSeatNoFromUser(input,row);
+
+        int index = searchSeatFromSeatNumber(row,seatNo,tickets);
+
+        if (index!= -1){
+            Ticket ticket = tickets[index];
+            System.out.println("Seat Not Available | "+ticket.getRow()+"-"+ticket.getSeatNo()+ " - "
+                    + ticket.getPerson().getName()+" "+ticket.getPerson().getSurname() + ticket.getPerson().getEmail()
+                    +" - "+ ukFormat.format(ticket.getPrice()));
+        }
+    }
+
+    private static void printTicketInformationAndTotalSales(Ticket[] tickets) {
+        NumberFormat ukFormat = NumberFormat.getCurrencyInstance(Locale.UK);
+        double total=0;
+        int i = 1;
+
+        for (Ticket ticket:tickets){
+            if (ticket != null){
+                System.out.println(i+") "+ ticket.getRow()+"-"+ticket.getSeatNo()+"  "+ticket.getPerson().getName()+" "
+                        +ticket.getPerson().getSurname()+"  Email :- "+ticket.getPerson().getEmail());
+                total +=ticket.getPrice();
+                i++;
+            }
+        }
+
+
+        if (total == 0){
+            System.out.println("No tickets sold yet.");
+        }else {
+            System.out.println("Total tickets sales : "+ ukFormat.format(total));
+        }
+
+    }
+
+    private static void showSeatingPlan( Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
         for (String row: rows){
             if(row.equals("A")||row.equals("D")){
                 for (int i = 0 ; i<maxSeatsPerRow;i++){
@@ -72,7 +116,7 @@ public class W2051722PlaneManagement {
         }
     }
 
-    private static void findFirstAvailableSeat(Scanner input, Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
+    private static void findFirstAvailableSeat(Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
         for (String row: rows){
             if(row.equals("A")||row.equals("D")){
                 for (int i = 0 ; i<maxSeatsPerRow;i++){
