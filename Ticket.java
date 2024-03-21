@@ -45,4 +45,5 @@ public class Ticket {
     public void setPerson(Person person) {
         this.person = person;
     }
+
 }
