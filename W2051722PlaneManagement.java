@@ -19,7 +19,9 @@ public class W2051722PlaneManagement {
                     case 1:
                         buyASeat(input,tickets);
                         break;
-                    case 2:break;
+                    case 2:
+                        cancelSeat(input, tickets);
+                        break;
                     case 3:break;
                     case 4:break;
                     case 5:break;
@@ -36,6 +38,19 @@ public class W2051722PlaneManagement {
         }
 
 
+    }
+
+    private static void cancelSeat(Scanner input, Ticket[] tickets) {
+        String row = getRowFromUser(input);
+        int seatNo = getSeatNoFromUser(input,row);
+
+        int index = searchSeatFromSeatNumber(row,seatNo,tickets);
+
+        if (index != -1){
+            tickets[index] = null;
+        }else {
+            System.out.println("Entered ticket number not available in the system.");
+        }
     }
 
     private static void buyASeat(Scanner input,Ticket[] tickets) {
