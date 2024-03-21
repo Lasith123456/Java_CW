@@ -9,6 +9,10 @@ public class W2051722PlaneManagement {
         //This is the tickets array which contains 52 empty spaces to store Ticket instances.
         Ticket[] tickets = new Ticket[52];
 
+        //Configuration data
+        String[] rows = {"A","B","C","D"};
+        int maxSeatsPerRow = 14;
+
         boolean flag = true;
         while (flag){
             int option;
@@ -22,8 +26,12 @@ public class W2051722PlaneManagement {
                     case 2:
                         cancelSeat(input, tickets);
                         break;
-                    case 3:break;
-                    case 4:break;
+                    case 3:
+                        findFirstAvailableSeat(input,tickets,rows,maxSeatsPerRow);
+                        break;
+                    case 4:
+                        showSeatingPlan(input,tickets,rows,maxSeatsPerRow);
+                        break;
                     case 5:break;
                     case 6:break;
                     case 0:
@@ -38,6 +46,50 @@ public class W2051722PlaneManagement {
         }
 
 
+    }
+
+    private static void showSeatingPlan(Scanner input, Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
+        for (String row: rows){
+            if(row.equals("A")||row.equals("D")){
+                for (int i = 0 ; i<maxSeatsPerRow;i++){
+                    if (searchSeatFromSeatNumber(row,(i+1),tickets) != -1){
+                        System.out.print(" X ");
+                    }else {
+                        System.out.print(" O ");
+                    }
+                }
+                System.out.println();
+            }else {
+                for (int i = 0 ; i<maxSeatsPerRow-2;i++){
+                    if (searchSeatFromSeatNumber(row,(i+1),tickets) != -1){
+                        System.out.print(" X ");
+                    }else {
+                        System.out.print(" O ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+    }
+
+    private static void findFirstAvailableSeat(Scanner input, Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
+        for (String row: rows){
+            if(row.equals("A")||row.equals("D")){
+                for (int i = 0 ; i<maxSeatsPerRow;i++){
+                    if (searchSeatFromSeatNumber(row,(i+1),tickets) == -1){
+                        System.out.println("Next available seat : "+ row + " - " + (i+1));
+                        return;
+                    }
+                }
+            }else {
+                for (int i = 0 ; i<maxSeatsPerRow-2;i++){
+                    if (searchSeatFromSeatNumber(row,(i+1),tickets) == -1){
+                        System.out.println("Next available seat : "+ row + " - " + (i+1));
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     private static void cancelSeat(Scanner input, Ticket[] tickets) {
