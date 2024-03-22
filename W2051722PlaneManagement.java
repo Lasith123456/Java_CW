@@ -159,6 +159,17 @@ public class W2051722PlaneManagement {
 
     }
 
+    /**
+     * createAndStoreNewTicket(String row, int seatNo, Scanner input, Ticket[] tickets) creates a new ticket and store the ticket on Tickets array   .
+     *
+     * This method prompts the user to enter personal information (name, last name, and email).
+     *Then method calls getIndexToStoreTicket and get the index of first available null space and store the new ticket.
+     * while creating the new Ticket, method create new person object and store the person details on it.
+     * Then Tickets object points the person object created by the method.
+     *
+     *Parameters - String row, int seatNo, Scanner object & Tickets array.
+     * Returns - No return values on this method.
+     */
     private static void createAndStoreNewTicket(String row, int seatNo, Scanner input, Ticket[] tickets) {
 
         System.out.print("Enter name : ");
@@ -179,6 +190,14 @@ public class W2051722PlaneManagement {
         }
     }
 
+    /**
+     * getIndexToStoreTicket(Ticket[] tickets) method finds the first available index to store a new ticket in tickets array.
+     *
+     * This method returns the index of fist available null space in tickets array.
+     *
+     * Parameters - Tickets array.
+     * Returns - this method returns the index of first available null space or null space not available, method will return -1.
+     */
     private static int getIndexToStoreTicket(Ticket[] tickets) {
         int x = 0;
         for (Ticket ticket:tickets){
@@ -190,14 +209,27 @@ public class W2051722PlaneManagement {
         return -1;
     }
 
+    /**
+     * validateEmail(String email) validates an email address by based on the presence of "@" and ".".
+     *
+     * Parameters -  email address (String).
+     * Returns - Method returns true if the email is valid or false if the email is not valid.
+     */
+
     private static boolean validateEmail(String email) {
-        Pattern emailPattern = Pattern.compile("^[\\w\\.]+@([\\w]+\\.)+[\\w]{2,4}");
-        Matcher emailMatcher = emailPattern.matcher(email);
-
-        return emailMatcher.matches();
-
+       return email.contains("@") && email.contains(".");
     }
 
+    /**
+     * searchSeatFromSeatNumber(String row, int seatNo, Ticket[] tickets) method for Searches for a ticket
+     * by row and seat number in tickets array.
+     *
+     * This method iterates through tickets array and,
+     * search for a ticket that matches the given row number and the seat number already validated.
+     *
+     * Parameters -  row number (String), seat number (Integer) & tickets array.
+     * Returns - Method returns the index of the ticket if matching ticket found from the tickets array. If matching ticket not found, method returns -1.
+     */
     private static  int searchSeatFromSeatNumber(String row, int seatNo, Ticket[] tickets){
         int x = 0;
 
@@ -212,6 +244,16 @@ public class W2051722PlaneManagement {
         return -1;
     }
 
+    /**
+     * getSeatNoFromUser(Scanner input, String row) prompts the user to enter a valid seat number.
+     * This method requests from the user to input a seat number.
+     * The input is validated using the validateSeatNumber(int seatNo, String row) method.
+     * If the input is not a valid seat number, the user is prompted again to enter the seat number.
+     * seat counts: rows "A" and "D" can have seat numbers from 1 to 14, while other rows are limited to 1 to 12.
+     *
+     * Parameters - Scanner object / String row number (already Validated)
+     * Method returns the seat number after passing the all the validations.
+     */
     private static int getSeatNoFromUser(Scanner input, String row){
         int seatNo;
         while (true){
@@ -227,6 +269,16 @@ public class W2051722PlaneManagement {
         }
     }
 
+    /**
+     * getRowFromUser(Scanner input) prompts the user to enter a valid row number until a correct one is provided.
+     *
+     * This method request the user to input a row number. Then validates the input using the
+     * validateRowNumber(String row) method. If the input is not a valid row ("A", "B", "C", or "D"),
+     * it prompts again the user to enter the correct row number . The method ensures the input is trimmed and converted to upper case
+     * before validation.
+     * Parameters - Scanner object .
+     * This method returns the row number(String) if the entered value validated.
+     */
     private static String getRowFromUser(Scanner input){
         String row;
         do {
@@ -236,6 +288,14 @@ public class W2051722PlaneManagement {
         return row;
     }
 
+    /**
+     * validateSeatNumber(int seatNo, String row) validates the given seat number according to the given row number.
+     *
+     * For rows "A" and "D", valid seat numbers are from 1 to 14 .
+     * For other rows, valid seat numbers are from 1 to 12 .
+     * parameters -  seatNo The seat number to validate (Integer) & Row number (String).
+     * This method returns true when the seat number valid. if not method returns false.
+     */
     private static boolean validateSeatNumber(int seatNo, String row) {
         if (row.equals("A")||row.equals("D")){
             if (seatNo>0 && seatNo <=14){
@@ -249,8 +309,14 @@ public class W2051722PlaneManagement {
         return false;
     }
 
+    /**
+     * validateRowNumber(String row) method validates the given row number.
+     *
+     * This checks if the received value is a valid row number, which should be one of "A", "B", "C", or "D".
+     * parameters -  The row number to validate(String).
+     * This method returns true when the row number valid. if not method returns false.
+     */
     private static boolean validateRowNumber(String row) {
-        /*This method verify the reciving value  */
         if (row.equals("A") || row.equals("B") || row.equals("C") || row.equals("D")) {
             return true;
         }else {
@@ -270,7 +336,6 @@ public class W2051722PlaneManagement {
         System.out.println("\t6) Search ticket");
         System.out.println("\t0) Quit");
         System.out.println("*****************************************");
-        System.out.print("Enter option");
-
+        System.out.print("Enter option : ");
     }
 }
