@@ -149,6 +149,16 @@ public class W2051722PlaneManagement {
         }
     }
 
+    /**
+     * buyASeat(Scanner input,Ticket[] tickets) method allow user to purchase of a seat
+     * by prompting the user for seat selection and attempting to store a new ticket.
+     *
+     * First method checks the availability of the seat according to the user entered row and seat number.
+     * If the ticket is available, method will call createAndStoreNewTicket(row,seatNo,input,tickets).
+     *
+     * Parameters - Scanner object and Tickets array.
+     * Returns - This method will not return any value.
+     */
     private static void buyASeat(Scanner input,Ticket[] tickets) {
         String row = getRowFromUser(input);
         int seatNo = getSeatNoFromUser(input,row);
