@@ -1,5 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Ticket {
     private String row;
@@ -75,8 +77,10 @@ public class Ticket {
      * Returns - This method will not return any value.
      */
     public void printTicketDetails(){
+        NumberFormat ukFormat = NumberFormat.getCurrencyInstance(Locale.UK);
+
         String ticketBody = "Ticket no : "+this.row+ " - "+ this.seatNo+", \nName : "+this.person.getName()+" "
-                +this.person.getSurname()+", \nEmail : "+this.person.getEmail()+",\nPrice : "+this.price+".";
+                +this.person.getSurname()+", \nEmail : "+this.person.getEmail()+",\nPrice : "+ukFormat.format(this.price)+".";
 
         try{
             FileWriter output = new FileWriter(this.row+" - "+this.seatNo+".txt");

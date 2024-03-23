@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 
-public class W2051722PlaneManagement {
+public class W2051722_PlaneManagement {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -14,6 +14,9 @@ public class W2051722PlaneManagement {
         //Configuration data
         String[] rows = {"A","B","C","D"};
         int maxSeatsPerRow = 14;
+
+        System.out.println("\tWelcome to the Plane Management application");
+        System.out.println();
 
         boolean flag = true;
         while (flag){
@@ -257,7 +260,7 @@ public class W2051722PlaneManagement {
         String email;
         do {
             System.out.print("Enter your email : ");
-            email = input.next();
+            email = input.next().toLowerCase();
         }while (!validateEmail(email));
 
         int index = getIndexToStoreTicket(tickets);
@@ -404,9 +407,9 @@ public class W2051722PlaneManagement {
     }
 
     private static void mainMenu(){
-        System.out.println("*****************************************");
-        System.out.println("*\t\t\t\tMain Menu\t\t\t\t*");
-        System.out.println("*****************************************");
+        System.out.println("*************************************************");
+        System.out.println("*\t\t\t\t\tMain Menu\t\t\t\t\t*");
+        System.out.println("*************************************************");
         System.out.println("\t1) Buy a seat");
         System.out.println("\t2) Cancel a seat");
         System.out.println("\t3) Find first available seat");
@@ -414,7 +417,7 @@ public class W2051722PlaneManagement {
         System.out.println("\t5) Print ticket information and total sales");
         System.out.println("\t6) Search ticket");
         System.out.println("\t0) Quit");
-        System.out.println("*****************************************");
+        System.out.println("*************************************************");
         System.out.print("Enter option : ");
     }
 }
