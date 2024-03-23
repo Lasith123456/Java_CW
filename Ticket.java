@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Ticket {
     private String row;
     private int seatNo;
@@ -12,6 +15,7 @@ public class Ticket {
         this.seatNo = seatNo;
         this.person = person;
         setPrice();
+        printTicketDetails();
     }
 
     public Ticket(String row, int seatNo, double price, Person person) {
@@ -57,6 +61,20 @@ public class Ticket {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public void printTicketDetails(){
+        String ticketBody = "Ticket no : "+this.row+ " - "+ this.seatNo+", \nName : "+this.person.getName()+" "
+                +this.person.getSurname()+", \nEmail : "+this.person.getEmail()+",\nPrice : "+this.price+".";
+
+        try{
+            FileWriter output = new FileWriter(this.row+" - "+this.seatNo+".txt");
+            output.write(ticketBody);
+            System.out.println("Success");
+            output.close();
+        }catch (IOException e){
+            System.out.println("Error");
+        }
     }
 
 }

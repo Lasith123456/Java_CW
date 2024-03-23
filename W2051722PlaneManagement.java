@@ -1,3 +1,4 @@
+import java.io.File;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
@@ -136,6 +137,17 @@ public class W2051722PlaneManagement {
         }
     }
 
+    /**
+     * cancelSeat(Scanner input, Ticket[] tickets) method use to cancel the ticket.
+     * Method prompt user to enter row & seat number.
+     * then check the seat status.
+     * If the seat already reserved, method will cancel the reservation &
+     * also delete the text files created on reservation of the seat
+     *
+     * Parameters - Scanner object, Tickets array
+     * Returns - This method will not return any value.
+     */
+
     private static void cancelSeat(Scanner input, Ticket[] tickets) {
         String row = getRowFromUser(input);
         int seatNo = getSeatNoFromUser(input,row);
@@ -144,8 +156,29 @@ public class W2051722PlaneManagement {
 
         if (index != -1){
             tickets[index] = null;
+            deleteFile(row,seatNo);
         }else {
             System.out.println("Entered ticket number not available in the system.");
+        }
+    }
+
+    /**
+     * deleteFile(String row, int seatNo) method use to delete the text files.
+     * First, method search a text file according to the pattern with row and seat number.
+     * then delete the txt file if exists.
+     * If not, message will display
+     *
+     * Parameters - Row number (String), seat number (Integer)
+     * Returns - This method will not return any value.
+     */
+    private static void deleteFile(String row, int seatNo){
+        File file = new File(row+" - "+seatNo+".txt");
+
+        if (file.exists()){
+            file.delete();
+            System.out.println("Ticket file deleted.");
+        }else{
+            System.out.println("File not exists");
         }
     }
 
@@ -238,7 +271,8 @@ public class W2051722PlaneManagement {
      * search for a ticket that matches the given row number and the seat number already validated.
      *
      * Parameters -  row number (String), seat number (Integer) & tickets array.
-     * Returns - Method returns the index of the ticket if matching ticket found from the tickets array. If matching ticket not found, method returns -1.
+     * Returns - Method returns the index of the ticket if matching ticket found from the tickets array.
+     * If matching ticket not found, method returns -1.
      */
     private static  int searchSeatFromSeatNumber(String row, int seatNo, Ticket[] tickets){
         int x = 0;
@@ -284,7 +318,8 @@ public class W2051722PlaneManagement {
      *
      * This method request the user to input a row number. Then validates the input using the
      * validateRowNumber(String row) method. If the input is not a valid row ("A", "B", "C", or "D"),
-     * it prompts again the user to enter the correct row number . The method ensures the input is trimmed and converted to upper case
+     * it prompts again the user to enter the correct row number . The method ensures the input is trimmed and converted
+     * to upper case
      * before validation.
      * Parameters - Scanner object .
      * This method returns the row number(String) if the entered value validated.
