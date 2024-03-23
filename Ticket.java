@@ -92,4 +92,13 @@ public class Ticket {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "row='" + row + '\'' +
+                ", seatNo=" + seatNo +
+                ", price=" + price +
+                ", person=" + person +
+                '}';
+    }
 }
