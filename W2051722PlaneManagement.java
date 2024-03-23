@@ -2,8 +2,7 @@ import java.io.File;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class W2051722PlaneManagement {
     public static void main(String[] args) {
@@ -55,6 +54,17 @@ public class W2051722PlaneManagement {
 
     }
 
+    /**
+     * searchTicket(Scanner input, Ticket[] tickets) method allows user to search ticket based on the seat number.
+     * This method prompt user to enter row and seat number which user need to search.
+     * Then this method iterate over the Tickets array and search,
+     * the ticket which contains the user entered row and seat number.
+     * then this method prints all the details of the ticket.
+     *
+     * Parameters - Tickets array and Scanner object.
+     * Returns - This method will not return any value.
+     */
+
     private static void searchTicket(Scanner input, Ticket[] tickets) {
         NumberFormat ukFormat = NumberFormat.getCurrencyInstance(Locale.UK);
         String row = getRowFromUser(input);
@@ -70,6 +80,15 @@ public class W2051722PlaneManagement {
         }
     }
 
+
+    /**
+     * printTicketInformationAndTotalSales(Ticket[] tickets) method provides tickets information and total sales.
+     * Method iterate over the tickets array and print the ticket information and finally provide the total sales.
+     * if any ticket not sold at the time of method calling it shows the message.
+     *
+     * Parameters - Tickets array.
+     * Returns - This method will not return any value.
+     */
     private static void printTicketInformationAndTotalSales(Ticket[] tickets) {
         NumberFormat ukFormat = NumberFormat.getCurrencyInstance(Locale.UK);
         double total=0;
@@ -83,8 +102,6 @@ public class W2051722PlaneManagement {
                 i++;
             }
         }
-
-
         if (total == 0){
             System.out.println("No tickets sold yet.");
         }else {
@@ -93,6 +110,15 @@ public class W2051722PlaneManagement {
 
     }
 
+    /**
+     * showSeatingPlan(Ticket[] tickets, String[] rows, int maxSeatsPerRow) method provides seating plan.
+     * Method iterate over the tickets array and provides the seating plan available.
+     * if the seat reserved plan shows the seat as " X ".
+     * if the seat not reserved, then plan shows it as " O ".
+     *
+     * Parameters - Tickets array, row numbers array, maximum seats per row.
+     * Returns - This method will not return any value.
+     */
     private static void showSeatingPlan( Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
         for (String row: rows){
             if(row.equals("A")||row.equals("D")){
@@ -117,6 +143,15 @@ public class W2051722PlaneManagement {
         }
     }
 
+    /**
+     * findFirstAvailableSeat(Ticket[] tickets, String[] rows, int maxSeatsPerRow) method provides first available seat.
+     * Method iterate over the tickets array and provides the first available seat row and seat number.
+     * First method check the available seat in row A then B ,C and D.
+     * seat rows with minimum seats contain maximum seats per row - 2 seats.
+     *
+     * Parameters - Tickets array, row numbers array, maximum seats per row.
+     * Returns - This method will not return any value.
+     */
     private static void findFirstAvailableSeat(Ticket[] tickets, String[] rows, int maxSeatsPerRow) {
         for (String row: rows){
             if(row.equals("A")||row.equals("D")){
