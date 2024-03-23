@@ -66,7 +66,7 @@ public class Ticket {
     }
 
 
-    /**
+    /*
      * printTicketDetails() method use to create the text files.
      * First, method creates a String which contain all the details required to store in the text file.
      * Then the method check the availability of the text file with the file name with the format row - seat number.txt
