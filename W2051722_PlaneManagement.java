@@ -79,6 +79,8 @@ public class W2051722_PlaneManagement {
             System.out.println("Seat Not Available | "+ticket.getRow()+"-"+ticket.getSeatNo()+ " - "
                     + ticket.getPerson().getName()+" "+ticket.getPerson().getSurname() + ticket.getPerson().getEmail()
                     +" - "+ ukFormat.format(ticket.getPrice()));
+        }else{
+            System.out.println("Seat not reserved yet.");
         }
     }
 
@@ -235,6 +237,8 @@ public class W2051722_PlaneManagement {
 
         if (searchSeatFromSeatNumber(row,seatNo,tickets)==-1){
             createAndStoreNewTicket(row,seatNo,input,tickets);
+        }else{
+            System.out.println("Seat already reserved");
         }
 
     }
