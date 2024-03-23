@@ -64,7 +64,6 @@ public class W2051722PlaneManagement {
      * Parameters - Tickets array and Scanner object.
      * Returns - This method will not return any value.
      */
-
     private static void searchTicket(Scanner input, Ticket[] tickets) {
         NumberFormat ukFormat = NumberFormat.getCurrencyInstance(Locale.UK);
         String row = getRowFromUser(input);
