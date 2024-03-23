@@ -63,6 +63,17 @@ public class Ticket {
         this.person = person;
     }
 
+
+    /**
+     * printTicketDetails() method use to create the text files.
+     * First, method creates a String which contain all the details required to store in the text file.
+     * Then the method check the availability of the text file with the file name with the format row - seat number.txt
+     * If if the file not available, new file will create by the method.
+     * Then write the String which already created in the method on the text file.
+     *
+     * Parameters - No parameters in this method
+     * Returns - This method will not return any value.
+     */
     public void printTicketDetails(){
         String ticketBody = "Ticket no : "+this.row+ " - "+ this.seatNo+", \nName : "+this.person.getName()+" "
                 +this.person.getSurname()+", \nEmail : "+this.person.getEmail()+",\nPrice : "+this.price+".";
