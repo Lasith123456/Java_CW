@@ -57,7 +57,7 @@ public class W2051722_PlaneManagement {
 
     }
 
-    /**
+    /*
      * searchTicket(Scanner input, Ticket[] tickets) method allows user to search ticket based on the seat number.
      * This method prompt user to enter row and seat number which user need to search.
      * Then this method iterate over the Tickets array and search,
@@ -85,7 +85,7 @@ public class W2051722_PlaneManagement {
     }
 
 
-    /**
+    /*
      * printTicketInformationAndTotalSales(Ticket[] tickets) method provides tickets information and total sales.
      * Method iterate over the tickets array and print the ticket information and finally provide the total sales.
      * if any ticket not sold at the time of method calling it shows the message.
@@ -114,7 +114,7 @@ public class W2051722_PlaneManagement {
 
     }
 
-    /**
+    /*
      * showSeatingPlan(Ticket[] tickets, String[] rows, int maxSeatsPerRow) method provides seating plan.
      * Method iterate over the tickets array and provides the seating plan available.
      * if the seat reserved plan shows the seat as " X ".
@@ -147,7 +147,7 @@ public class W2051722_PlaneManagement {
         }
     }
 
-    /**
+    /*
      * findFirstAvailableSeat(Ticket[] tickets, String[] rows, int maxSeatsPerRow) method provides first available seat.
      * Method iterate over the tickets array and provides the first available seat row and seat number.
      * First method check the available seat in row A then B ,C and D.
@@ -176,7 +176,7 @@ public class W2051722_PlaneManagement {
         }
     }
 
-    /**
+    /*
      * cancelSeat(Scanner input, Ticket[] tickets) method use to cancel the ticket.
      * Method prompt user to enter row & seat number.
      * then check the seat status.
@@ -201,7 +201,7 @@ public class W2051722_PlaneManagement {
         }
     }
 
-    /**
+    /*
      * deleteFile(String row, int seatNo) method use to delete the text files.
      * First, method search a text file according to the pattern with row and seat number.
      * then delete the txt file if exists.
@@ -221,7 +221,7 @@ public class W2051722_PlaneManagement {
         }
     }
 
-    /**
+    /*
      * buyASeat(Scanner input,Ticket[] tickets) method allow user to purchase of a seat
      * by prompting the user for seat selection and attempting to store a new ticket.
      *
@@ -243,7 +243,7 @@ public class W2051722_PlaneManagement {
 
     }
 
-    /**
+    /*
      * createAndStoreNewTicket(String row, int seatNo, Scanner input, Ticket[] tickets) creates a new ticket and store the ticket on Tickets array   .
      *
      * This method prompts the user to enter personal information (name, last name, and email).
@@ -274,7 +274,7 @@ public class W2051722_PlaneManagement {
         }
     }
 
-    /**
+    /*
      * getIndexToStoreTicket(Ticket[] tickets) method finds the first available index to store a new ticket in tickets array.
      *
      * This method returns the index of fist available null space in tickets array.
@@ -293,7 +293,7 @@ public class W2051722_PlaneManagement {
         return -1;
     }
 
-    /**
+    /*
      * validateEmail(String email) validates an email address by based on the presence of "@" and ".".
      *
      * Parameters -  email address (String).
@@ -304,7 +304,7 @@ public class W2051722_PlaneManagement {
        return email.contains("@") && email.contains(".");
     }
 
-    /**
+    /*
      * searchSeatFromSeatNumber(String row, int seatNo, Ticket[] tickets) method for Searches for a ticket
      * by row and seat number in tickets array.
      *
@@ -329,7 +329,7 @@ public class W2051722_PlaneManagement {
         return -1;
     }
 
-    /**
+    /*
      * getSeatNoFromUser(Scanner input, String row) prompts the user to enter a valid seat number.
      * This method requests from the user to input a seat number.
      * The input is validated using the validateSeatNumber(int seatNo, String row) method.
@@ -354,7 +354,7 @@ public class W2051722_PlaneManagement {
         }
     }
 
-    /**
+    /*
      * getRowFromUser(Scanner input) prompts the user to enter a valid row number until a correct one is provided.
      *
      * This method request the user to input a row number. Then validates the input using the
@@ -374,7 +374,7 @@ public class W2051722_PlaneManagement {
         return row;
     }
 
-    /**
+    /*
      * validateSeatNumber(int seatNo, String row) validates the given seat number according to the given row number.
      *
      * For rows "A" and "D", valid seat numbers are from 1 to 14 .
@@ -395,7 +395,7 @@ public class W2051722_PlaneManagement {
         return false;
     }
 
-    /**
+    /*
      * validateRowNumber(String row) method validates the given row number.
      *
      * This checks if the received value is a valid row number, which should be one of "A", "B", "C", or "D".
