@@ -339,7 +339,7 @@ public class W2051722_PlaneManagement {
         int seatNo;
         while (true){
             try {
-                System.out.print("Enter seat number");
+                System.out.print("Enter seat number : ");
                 seatNo = Integer.parseInt(input.next());
                 if (validateSeatNumber(seatNo, row)){
                     return seatNo;
